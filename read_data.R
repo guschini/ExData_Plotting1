@@ -12,6 +12,7 @@ get_data <- function(){
     message("Zip file unzipped")
   }
   
+  message("Reading data ...")
   # Reading "Date" column only
   # Reading 3 times are done here in order to accelerate process of reading
   # as well as allocating minimum memory
@@ -38,6 +39,7 @@ get_data <- function(){
                   na.strings = "?",
                   header = TRUE)
   x$DateDate <- dates[needed_dates]
+  Sys.setlocale("LC_TIME", "English")
   x$WeekDay <-  weekdays(x$DateDate, abbreviate = TRUE)
   x$TimeTime <- strptime(paste(x$Date, x$Time), "%d/%m/%Y %H:%M:%S")
   x  

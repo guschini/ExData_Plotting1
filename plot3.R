@@ -1,6 +1,7 @@
 source("read_data.R")
 
 do_plot <- function(data = get_data()){
+  png(filename="plot3.png", width = 480, height = 480)
   with(data, {
     plot(data$TimeTime, data$Sub_metering_1, type = 'l', col = "black",
          xlab = "", ylab = "Energy sub metering")
@@ -11,4 +12,5 @@ do_plot <- function(data = get_data()){
          legend=c("Sub_metering_1","Sub_metering_2", "Sub_metering_3"), 
          col=c("black", "red", "blue"),   
          pch="-")
+  dev.off()
 }
